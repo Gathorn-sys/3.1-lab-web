@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Зображення</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        figure {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 300px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        figcaption {
+            font-style: italic;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Зображення</h1>
+
+    <h2>Демонстрація використання тегів `figure`, `img`, `figcaption`</h2>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://media.istockphoto.com/id/517188688/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B3%D0%BE%D1%80%D0%BD%D1%8B%D0%B9-%D0%BB%D0%B0%D0%BD%D0%B4%D1%88%D0%B0%D1%84%D1%82.jpg?s=612x612&w=0&k=20&c=6Qfb5YCLIkiq_hYxRmTj8t2FWwr4Yrdq2CRGVwj5Ymk=" alt="Природа" width="300" height="200">
+            <figcaption>Прекрасний краєвид природи</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://i.ytimg.com/vi/Ks2R44fr6fc/maxresdefault.jpg" alt="Місто" width="300" height="200">
+            <figcaption>Сучасне місто у вечірніх вогнях</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://st2.depositphotos.com/1011081/9323/i/450/depositphotos_93231320-stock-photo-universe-scene-with-planets-stars.jpg" alt="Космос" width="300" height="200">
+            <figcaption>Загадковий простір космосу</figcaption>
+        </figure>
+    </div>
+
+    <h2>Додайте власне зображення</h2>
+
+    <label for="image-url">URL зображення:</label>
+    <input type="text" id="image-url" placeholder="Введіть URL зображення"><br>
+
+    <label for="image-caption">Підпис до зображення:</label>
+    <input type="text" id="image-caption" placeholder="Введіть підпис"><br>
+
+    <button onclick="addImage()">Додати зображення</button>
+
+    <h2>Ваші зображення:</h2>
+    <div class="image-container" id="user-images"></div>
+
+    <script>
+        function addImage() {
+            let url = document.getElementById("image-url").value;
+            let caption = document.getElementById("image-caption").value;
+
+            if (url.trim() === "") {
+                alert("Будь ласка, введіть URL зображення!");
+                return;
+            }
+
+            let figure = document.createElement("figure");
+
+            let img = document.createElement("img");
+            img.src = url;
+            img.alt = "Користувацьке зображення";
+            img.width = 300;
+            img.height = 200;
+
+            let figcaption = document.createElement("figcaption");
+            figcaption.textContent = caption || "Без підпису";
+
+            figure.appendChild(img);
+            figure.appendChild(figcaption);
+
+            document.getElementById("user-images").appendChild(figure);
+        }
+    </script>
+
+    <br>
+    <a href="../Untitled-1.html">⬅ Повернутися на головну</a>
+
+</body>
+</html>

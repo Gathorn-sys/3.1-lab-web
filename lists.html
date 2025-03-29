@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Списки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .list-box {
+            width: 45%;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Списки</h1>
+
+    <h2>Введіть елементи списків:</h2>
+    <label>Невпорядкований список (ul):</label>
+    <textarea id="ul-items" placeholder="Введіть елементи через кому..."></textarea>
+
+    <label>Впорядкований список (ol):</label>
+    <textarea id="ol-items" placeholder="Введіть елементи через кому..."></textarea>
+
+    <label>Описовий список (dl):</label>
+    <textarea id="dl-items" placeholder="Введіть терміни та описи через двокрапку, кожен з нового рядка..."></textarea>
+
+    <button onclick="generateLists()">Створити списки</button>
+
+    <h2>Результати:</h2>
+    <div class="list-container">
+        <div class="list-box">
+            <h3>Невпорядкований список (ul)</h3>
+            <ul id="ul-output"></ul>
+        </div>
+        <div class="list-box">
+            <h3>Впорядкований список (ol)</h3>
+            <ol id="ol-output"></ol>
+        </div>
+    </div>
+
+    <div class="list-box">
+        <h3>Описовий список (dl)</h3>
+        <dl id="dl-output"></dl>
+    </div>
+
+    <script>
+        function generateLists() {
+           
+            let ulText = document.getElementById("ul-items").value;
+            let olText = document.getElementById("ol-items").value;
+            let dlText = document.getElementById("dl-items").value;
+
+            
+            document.getElementById("ul-output").innerHTML = "";
+            document.getElementById("ol-output").innerHTML = "";
+            document.getElementById("dl-output").innerHTML = "";
+
+            
+            if (ulText.trim() !== "") {
+                let ulItems = ulText.split(",");
+                ulItems.forEach(item => {
+                    let li = document.createElement("li");
+                    li.textContent = item.trim();
+                    document.getElementById("ul-output").appendChild(li);
+                });
+            }
+
+            
+            if (olText.trim() !== "") {
+                let olItems = olText.split(",");
+                olItems.forEach(item => {
+                    let li = document.createElement("li");
+                    li.textContent = item.trim();
+                    document.getElementById("ol-output").appendChild(li);
+                });
+            }
+
+            
+            if (dlText.trim() !== "") {
+                let dlItems = dlText.split("\n");
+                dlItems.forEach(item => {
+                    let parts = item.split(":");
+                    if (parts.length === 2) {
+                        let dt = document.createElement("dt");
+                        dt.textContent = parts[0].trim();
+                        let dd = document.createElement("dd");
+                        dd.textContent = parts[1].trim();
+                        document.getElementById("dl-output").appendChild(dt);
+                        document.getElementById("dl-output").appendChild(dd);
+                    }
+                });
+            }
+        }
+    </script>
+
+    <br>
+    <a href="../Untitled-1.html">⬅ Повернутися на головну</a>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Робота з текстом</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .text-example {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Робота з текстом</h1>
+
+    <h2>Введіть ваш текст:</h2>
+    <textarea id="user-text" placeholder="Введіть текст..."></textarea>
+    <button onclick="formatText()">Форматувати</button>
+
+    <h2>Результат форматування:</h2>
+    <div id="output" class="text-example"></div>
+
+    <h2>Приклади використання тегів:</h2>
+    <div class="text-example">
+        <b>Жирний текст (b)</b><br>
+        <em>Емфазований текст (em)</em><br>
+        <i>Курсивний текст (i)</i><br>
+        <small>Маленький текст (small)</small><br>
+        <strong>Важливий текст (strong)</strong><br>
+        Вода формула: H<sub>2</sub>O (sub)<br>
+        X<sup>2</sup> + Y<sup>2</sup> = Z<sup>2</sup> (sup)<br>
+        <ins>Доданий текст (ins)</ins><br>
+        <del>Видалений текст (del)</del><br>
+        <mark>Підсвічений текст (mark)</mark><br>
+        <abbr title="Всесвітня організація охорони здоров'я">ВООЗ</abbr> (abbr)<br>
+        <address>Автор: Іван Петренко, Email: ivan@example.com</address><br>
+        <bdo dir="rtl">Цей текст відображається справа наліво</bdo> (bdo)<br>
+        <blockquote>Це довга цитата з іншого джерела (blockquote)</blockquote><br>
+        <cite>Назва твору: "Війна і мир" (cite)</cite><br>
+        <q>Це коротка цитата (q)</q>
+    </div>
+
+    <script>
+        function formatText() {
+            let text = document.getElementById("user-text").value;
+            let words = text.trim().split(/\s+/);
+            let quoteTag = words.length <= 5 ? "q" : "blockquote"; 
+
+            
+            let formattedText = `
+                <b>${text}</b> - Жирний текст<br>
+                <em>${text}</em> - Емфазований текст<br>
+                <i>${text}</i> - Курсив<br>
+                <small>${text}</small> - Маленький текст<br>
+                <strong>${text}</strong> - Важливий текст<br>
+                ${text}<sub>2</sub> - Нижній індекс<br>
+                ${text}<sup>2</sup> - Верхній індекс<br>
+                <ins>${text}</ins> - Доданий текст<br>
+                <del>${text}</del> - Видалений текст<br>
+                <mark>${text}</mark> - Підсвічений текст<br>
+                <abbr title="${text}">${text}</abbr> - Скорочення<br>
+                <${quoteTag}>${text}</${quoteTag}> - ${words.length <= 5 ? "Коротка цитата" : "Довга цитата"}
+            `;
+
+            document.getElementById("output").innerHTML = formattedText;
+        }
+    </script>
+
+
+
+    <br>
+    <a href="../Untitled-1.html">⬅ Повернутися на головну</a>
+
+</body>
+</html>

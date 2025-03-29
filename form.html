@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            margin: auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+            display: block;
+        }
+        .gender-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Форми</h1>
+
+
+    <form id="userForm">
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+
+        <label for="age">Вік:</label>
+        <input type="number" id="age" name="age" placeholder="Введіть ваш вік" required>
+
+        <label>Стать:</label>
+        <div class="gender-group">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Чоловіча</label>
+            
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Жіноча</label>
+        </div>
+
+        <label for="email">Електронна пошта:</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+
+        <label for="city">Місто:</label>
+        <select id="city" name="city">
+            <option value="kyiv">Київ</option>
+            <option value="lviv">Львів</option>
+            <option value="kharkiv">Харків</option>
+        </select>
+
+        <label for="message">Повідомлення:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Введіть ваше повідомлення"></textarea>
+
+        <button type="submit">Відправити</button>
+    </form>
+
+    <br>
+    <a href="../Untitled-1.html">⬅ Повернутися на головну</a>
+
+</body>
+</html>

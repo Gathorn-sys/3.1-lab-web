@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гіперпосилання</title>
+</head>
+<body>
+
+    <h1>Додавання власного гіперпосилання</h1>
+
+    <label for="link-text">Текст посилання:</label>
+    <input type="text" id="link-text" placeholder="Введіть текст"><br><br>
+
+    <label for="link-url">URL-адреса:</label>
+    <input type="text" id="link-url" placeholder="Введіть URL"><br><br>
+
+    <button onclick="addLink()">Додати посилання</button>
+
+    <ul id="link-list"></ul>
+
+    <script>
+        function addLink() {
+            let text = document.getElementById("link-text").value;
+            let url = document.getElementById("link-url").value;
+
+            if (text.trim() !== "" && url.trim() !== "") {
+                let li = document.createElement("li");
+                let a = document.createElement("a");
+                a.innerText = text;
+                a.href = url;
+                a.target = "_blank";
+                li.appendChild(a);
+                document.getElementById("link-list").appendChild(li);
+                
+                document.getElementById("link-text").value = "";
+                document.getElementById("link-url").value = "";
+            }
+        }
+    </script>
+
+    <br>
+    <a href="../Untitled-1.html">⬅ Повернутися на головну</a>
+
+</body>
+</html>
